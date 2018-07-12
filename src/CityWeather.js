@@ -21,7 +21,8 @@ class CityWeather extends Component {
 
     fetchCityData = () => {
         const { zipcode } = this.props.match.params
-        fetch(`api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&APPID=${key.APPID} `)
+        fetch(`api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&APPID=${key.APPID}`)
+        //fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&APPID=f9abf2449b629016fb0bfb171528aecb`)
             .then(response => response.json())            // parse the response json into JavaScript object(s)
             .then(zip => this.setState({ zip }))
             .then(zip => console.log(zip))        // log the parsed users to the console
