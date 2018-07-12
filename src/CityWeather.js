@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Github from './Github';
+import key from './Key'
 
 class CityWeather extends Component {
     constructor(props) {
@@ -20,9 +21,11 @@ class CityWeather extends Component {
 
     fetchCityData = () => {
         const { zipcode } = this.props.match.params
-        fetch(`api.openweathermap.org/data/2.5/weather?zip=${zipcode},us`)
-            .then(response => response.json())
+        fetch(`api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&APPID=${key.APPID} `)
+            .then(response => response.json())            // parse the response json into JavaScript object(s)
             .then(zip => this.setState({ zip }))
+            .then(zip => console.log(zip))        // log the parsed users to the console
+            .catch(error => console.warn(error))      // if any errors occur, log them to the console
     }
 
     render() {
